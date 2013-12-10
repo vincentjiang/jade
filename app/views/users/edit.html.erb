@@ -1,6 +1,47 @@
 <h1>Editing user</h1>
 
-<%= render 'form' %>
+<%= form_for(@user) do |f| %>
+		<div class="row">
+			<div class="col-sm-4">
+			  <div class="form-group">
+			    <%= f.label :email %><br>
+			    <%= f.text_field :email, class: "form-control", placeholder: "Your Email", requred: true, focus: true %>
+			  </div>
+			</div>
+		</div>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+		<div class="row">
+			<div class="col-sm-4">
+			  <div class="form-group">
+			    <%= f.label :ename %><br>
+			    <%= f.text_field :ename, class: "form-control", placeholder: "Your english name", requre: true %>
+			  </div>
+			</div>
+			<div class="col-sm-4">
+			  <div class="form-group">
+			    <%= f.label :cname %><br>
+			    <%= f.text_field :cname, class: "form-control", placeholder: "Your chinese name", requre: true %>
+			  </div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-4">
+			  <div class="form-group">
+			    <%= f.label :etitle %><br>
+			    <%= f.text_field :etitle, class: "form-control", placeholder: "Your english title", requre: true %>
+			  </div>
+			</div>
+			<div class="col-sm-4">
+			  <div class="form-group">
+			    <%= f.label :ctitle %><br>
+			    <%= f.text_field :ctitle, class: "form-control", placeholder: "Your chinese title", requre: true %>
+			  </div>
+			</div>
+		</div>
+
+		<div class="actions">
+			<%= f.submit 'Submit', class: "btn btn-success" %>&nbsp;&nbsp;<%= link_to 'Back', users_path %>
+		</div>
+
+	<% end %>

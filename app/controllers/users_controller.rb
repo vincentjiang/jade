@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.all.order(:email)
   end
 
   # GET /users/1
@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
+      user_params = params.require(:user).permit(:email, :ename, :cname, :etitle, :ctitle)
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
@@ -69,6 +70,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :hashed_password, :salt, :ename, :cname, :etitle, :ctitle)
+      params.require(:user).permit(:email, :password, :password_confirmation, :ename, :cname, :etitle, :ctitle)
     end
 end

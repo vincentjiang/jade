@@ -16,6 +16,19 @@
 .navbar-inverse .navbar-right > a {
   color: #fff;
 }
+.alert {
+  margin-top: 20px;
+  text-align: center;
+}
+main h1 {
+  margin: 20px 0;
+}
+th, td {
+  text-align: center;
+}
+form .actions {
+  margin-top: 20px;
+}
 
 // make all images responsive by default
 img {
