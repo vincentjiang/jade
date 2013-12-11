@@ -1,0 +1,13 @@
+<h1>Check the role details</h1>
+
+<div class="role-show">
+	<p>
+	  <strong>Description: </strong>
+	  <%= @role.desc %>
+	</p>
+</div>
+
+<div class="actions">
+	<%= link_to ' Edit', edit_role_path(@role), class: "btn btn-warning btn-sm fa fa-pencil" %>
+	<%= link_to 'Back', roles_path, class: "btn btn-link" %>
+</div>

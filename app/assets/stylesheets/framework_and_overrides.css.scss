@@ -30,11 +30,11 @@ th, td {
 .actions {
   margin-top: 20px;
 }
-.user-show {
+.user-show, .role-show {
   padding: 5px 10px;
   border-left: 5px solid #ddd;
 }
-.user-show p {
+.user-show p, .role-show {
   font-size: 16px;
 }
 footer {
