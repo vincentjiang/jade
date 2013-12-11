@@ -1,4 +1,8 @@
 Jade::Application.routes.draw do
+  get 'index' => "pages#index"
+  get 'about' => "pages#about"
+  get 'password' => "password#new"
+  post 'update_password' => "password#udpate"
   get 'login' => "sessions#new"
   post 'login' => "sessions#create"
   get 'logout' => "sessions#destroy"
@@ -9,7 +13,7 @@ Jade::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-  root to: 'users#index'
+  root to: 'pages#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
