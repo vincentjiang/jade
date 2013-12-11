@@ -10,14 +10,22 @@
     <%= csrf_meta_tags %>
   </head>
   <body style="background-color: #eee;">
+
     <header>
       <%= render 'layouts/navigation' %>
     </header>
+
     <main role="main">
       <div class="container">
         <%= render 'layouts/messages' %>
         <%= yield %>
       </div>
     </main>
+
+    <div class="container">
+      <footer>
+        <p><i class="fa fa-flag"></i> Current version is 1.0</p>
+      </footer>
+    </div>
   </body>
 </html>

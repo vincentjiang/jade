@@ -1,0 +1,38 @@
+<h1 class="text-center" style="margin: 30px 0;">Please Login</h1>
+
+<div class="row">
+	<div class="col-sm-offset-3 col-sm-6 col-md-offset-3 col-md-6 col-lg-offset-4 col-lg-4">
+		<%= form_tag login_path do %>
+		  <div class="input-group">
+			  <span class="input-group-addon"><i class="fa fa-envelope-o fa-2x fa-fw"></i></span>
+				<%= email_field_tag :email, params[:email], class: "form-control input-lg", placeholder: "Enter email", required: true, autofocus: true %>
+			</div>
+
+			<br>
+
+		  <div class="input-group">
+			  <span class="input-group-addon"><i class="fa fa-key fa-2x fa-fw"></i></span>
+				<%= password_field_tag :password, params[:password], class: "form-control input-lg", placeholder: "Password", required: true %>
+			</div>
+
+			<br>
+			
+			<div class="pull-left">
+				<div class="checkbox">
+	        <label>
+	          <input type="checkbox"> Remember me
+	        </label>
+	      </div>
+	    </div>
+			
+			<div class="pull-right">
+				<a href="" class="btn btn-link">Forget password?</a>
+			</div>
+
+			<br>
+
+			<%= submit_tag :submit, class: "btn btn-block btn-primary btn-lg" %>
+
+		<% end %>
+	</div>
+</div>

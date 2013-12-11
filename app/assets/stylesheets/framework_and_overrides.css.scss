@@ -21,13 +21,25 @@
   text-align: center;
 }
 main h1 {
+  color: gray;
   margin: 20px 0;
 }
 th, td {
   text-align: center;
 }
-form .actions {
+.actions {
   margin-top: 20px;
+}
+.user-show {
+  padding: 5px 10px;
+  border-left: 5px solid #ddd;
+}
+.user-show p {
+  font-size: 16px;
+}
+footer {
+  padding-top: 20px;
+  border-top: 1px solid gray;
 }
 
 // make all images responsive by default
