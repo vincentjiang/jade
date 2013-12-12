@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
 	belongs_to :role
+	has_many :certificates
 
 	attr_reader :password
 	attr_accessor :password_confirmation

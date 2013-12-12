@@ -4,6 +4,8 @@
   	<br>
   	<small>--simple、beautiful、responsive</small>
   </h1>
+  <% unless session[:user_id] %>
     <a class="btn btn-lg btn-primary" href="<%= login_path %>" role="button">immediately login <i class="fa fa-arrow-circle-o-right fa-fw"></i></a>
+  <% end %>
   
 </div>

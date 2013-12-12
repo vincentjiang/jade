@@ -30,16 +30,22 @@ th, td {
 .actions {
   margin-top: 20px;
 }
-.user-show, .role-show {
+.object-show {
   padding: 5px 10px;
   border-left: 5px solid #ddd;
 }
-.user-show p, .role-show p {
+.object-show p {
   font-size: 16px;
 }
 footer {
   padding-top: 20px;
   border-top: 1px solid gray;
+}
+.item-group {
+  margin: 10px 0;
+}
+.item-group .item {
+  display: inline;
 }
 
 // make all images responsive by default

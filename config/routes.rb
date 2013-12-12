@@ -1,4 +1,6 @@
 Jade::Application.routes.draw do
+  resources :certificates
+
   resources :roles
 
   get 'index' => "pages#index"

@@ -1,0 +1,207 @@
+<%= form_for(@certificate) do |f| %>
+
+  <div class="item-group">
+    <div class="item">
+      <%= f.label :report_no, '证书编号：' %>
+      <%= f.text_field :report_no, size: 16 %>
+    </div>
+    
+  </div>
+  <div class="item-group">
+    <div class="item">
+      <%= f.label :date_test, '测试/签发日期：' %>
+      <%= f.date_select :date_test %>
+    </div>
+  </div>
+
+  <div class="item-group">
+    <div class="item">
+      <%= f.radio_button :is_hoklas, 'A' %>
+      <%= f.label :is_hoklas_a, '翡翠鉴定报告' %>
+      <%= f.radio_button :is_hoklas, 'B' %>
+      <%= f.label :is_hoklas_b, '翡翠鉴定证书' %>
+    </div>
+  </div>
+
+  <div class="item-group">
+    <label for="">形状及车工：</label>
+    <div class="item">
+      <%= f.label :shape, '形状：' %>
+      <%= f.select :shape, %w{旦形 佛公 马鞍面 怀古/圆扣 梨形 观音 长方形 筒珠/蘭豆 心/杏心形 圆形 方形 圆珠/圆环 榄尖形 花件 十字架 首饰套装/摆件} %>
+      <%= f.select :object, %w{戒指 吊坠 耳环 襟针 手链 颈链 袖扣 手镯} %>
+    </div>
+    <div class="item">
+      <%= f.label :cut, '车工：' %>
+      <%= f.select :cut, %w{卜面 平面 拱面} %>
+    </div>
+  </div>
+
+  <div class="item-group">
+    <div class="item">
+      <%= f.label :dimensions1, '尺寸一：' %>
+      <%= f.text_field :dimensions1, size: 4 %>
+      <%= f.label :dimensions2, '尺寸二：' %>
+      <%= f.text_field :dimensions2, size: 4 %>
+      <%= f.label :dimensions3, '尺寸三：' %>
+      <%= f.text_field :dimensions3, size: 4 %>
+      <%= f.label :dimension, '尺寸（计算后）：' %>
+      <%= f.text_field :dimension, size: 4, disabled: true %>
+    </div>
+  </div>
+
+  <div class="item-group">
+    <div class="item">
+      <%= f.label :weight, '重量：' %>
+      <%= f.text_field :weight, size: 4 %>
+      <%= f.radio_button :weight_desc, "A" %>
+      <%= f.label :weight_desc_a, '裸石' %>
+      <%= f.radio_button :weight_desc, "B" %>
+      <%= f.label :weight_desc_b, '整件饰物' %>
+      <%= f.radio_button :weight_desc, "C" %>
+      <%= f.label :weight_desc_c, '整件饰物-连绳' %>
+    </div>
+  </div>
+
+  <div class="item-group">
+    <div class="item">
+      <%= f.label :transparency, '透明度：' %>
+      <%= f.select :transparency, %w{半透明 全透明 不透明 未能测量} %>
+    </div>
+    <div class="item">
+      <%= f.label :polariscope, '偏光仪：' %>
+      <%= f.select :polariscope, %w{多晶质 各向异性 各向同性 异常消光 未能测量} %>
+    </div>
+    <div class="item">
+      <%= f.label :refractive_index, '折射率：' %>
+      <%= f.text_field :refractive_index, size: 4 %>
+    </div>
+  </div>
+  
+  <div class="item-group">
+    <label for="">颜色深浅度：</label>
+    <div class="item">
+      <%= f.label :deep1, '深浅度一：' %>
+      <%= f.select :deep1, %w{淡 浅 绿 鲜 浓 深 暗} %>
+      <%= f.label :color1, '颜色一：' %>
+      <%= f.select :color1, %w{绿色 黄绿色 蓝绿色} %>
+      <%= f.label :deep2, '深浅度二：' %>
+      <%= f.select :deep2, %w{淡 浅 绿 鲜 浓 深 暗} %>
+      <%= f.label :color2, '颜色二：' %>
+      <%= f.select :color2, %w{绿色 黄绿色 蓝绿色} %>
+      <%= f.label :deep3, '深浅度三：' %>
+      <%= f.select :deep3, %w{淡 浅 绿 鲜 浓 深 暗} %>
+      <%= f.label :color3, '颜色三：' %>
+      <%= f.select :color3, %w{绿色 黄绿色 蓝绿色} %>
+    </div>
+    <div class="item">
+      <%= f.label :distribution, '分布：' %>
+      <%= f.select :distribution, %w{均匀 不均匀 塊状 脈状 点状} %>
+    </div>
+  </div>
+
+  <div class="item-group">
+    <label for="">比重值：</label>
+    <div class="item">
+      <%= f.radio_button :is_measure, "A" %>
+      <%= f.label :is_measure_a, '未能测量：' %>
+    </div>
+    <div class="item">
+      <%= f.radio_button :is_measure, "B" %>
+      <%= f.label :is_measure_b, '测量：' %>
+      <%= f.label :ww1, 'ww1：' %>
+      <%= f.text_field :ww1, size: 4 %>
+      <%= f.label :ww2, 'ww2：' %>
+      <%= f.text_field :ww2, size: 4 %>
+      <%= f.label :ww3, 'ww3：' %>
+      <%= f.text_field :ww3, size: 4 %>
+      <%= f.label :sg, 'SG值：' %>
+      <%= f.text_field :sg, size: 4, disabled: true %>
+    </div>
+  </div>
+  <div class="item-group">
+    <label for="">荧光效应：</label>
+    <div class="item">
+      <%= f.label :uv_lw, '荧光线长波：' %>
+      <%= f.radio_button :uv_lw, "A" %>
+      <%= f.label :uv_lw_a, '无' %>
+      <%= f.radio_button :uv_lw, "B" %>
+      <%= f.label :uv_lw_b, '弱' %>
+      <%= f.radio_button :uv_lw, "C" %>
+      <%= f.label :uv_lw_c, '中' %>
+      <%= f.radio_button :uv_lw, "D" %>
+      <%= f.label :uv_lw_d, '强' %>
+    </div>
+    <div class="item">
+      <%= f.label :uv_sw, '荧光线短波：' %>
+      <%= f.radio_button :uv_sw, "A" %>
+      <%= f.label :uv_sw_a, '无' %>
+      <%= f.radio_button :uv_sw, "B" %>
+      <%= f.label :uv_sw_b, '弱' %>
+      <%= f.radio_button :uv_sw, "C" %>
+      <%= f.label :uv_sw_c, '中' %>
+      <%= f.radio_button :uv_sw, "D" %>
+      <%= f.label :uv_sw_d, '强' %>
+    </div>
+  </div>
+  
+  <div class="item-group">
+    <%= f.label :chelsea_color_filter, '滤色镜：' %>
+    <%= f.radio_button :chelsea_color_filter, "A" %>
+    <%= f.label :chelsea_color_filter_a, '绿色' %>
+    <%= f.radio_button :chelsea_color_filter, "B" %>
+    <%= f.label :chelsea_color_filter_b, '红色' %>
+    <%= f.radio_button :chelsea_color_filter, "C" %>
+    <%= f.label :chelsea_color_filter_c, '颜色不变' %>
+  </div>
+  <div class="item-group">
+    <%= f.label :visible_spectrum, '可见光谱：' %>
+    <%= f.radio_button :visible_spectrum, "A" %>
+    <%= f.label :visible_spectrum_a, '硬玉光谱' %>
+    <%= f.radio_button :visible_spectrum, "B" %>
+    <%= f.label :visible_spectrum_b, '染色光谱' %>
+  </div>
+  <div class="item-group">
+    <label for="">放大观察（表面特征）：</label>
+      <%= f.select :magnification, %w{粒状及纤维状晶体结构（中粒） 纤维状晶体结构（幼粒） 粒状晶体结构（粗粒）} %>
+      <%= f.select :surface_feature, %w{铁渗 翠性 小坑洞 橙皮纹 微小裂纹 沟漕} %>
+  </div>
+
+  <div class="item-group">
+    <div class="item">
+      <%= f.label :level, '翡翠级别：' %>
+      <%= f.radio_button :level, "A" %>
+      <%= f.label :level_a, 'A' %>
+      <%= f.radio_button :level, "B" %>
+      <%= f.label :level_b, 'B' %>
+      <%= f.radio_button :level, "C" %>
+      <%= f.label :level_c, 'C' %>
+      <%= f.radio_button :level, "BC" %>
+      <%= f.label :level_bc, 'B+C' %>
+    </div>
+    <div class="item">
+      <%= f.label :conclusion, '结论：' %>
+      <%= f.radio_button :conclusion, "A" %>
+      <%= f.label :conclusion_a, '天然颜色翡翠' %>
+      <%= f.radio_button :conclusion, "B" %>
+      <%= f.label :conclusion_b, '处理翡翠树脂充填' %>
+      <%= f.radio_button :conclusion, "C" %>
+      <%= f.label :conclusion_c, '处理翡翠颜料染色' %>
+    </div>
+  </div>
+
+  <div class="item-group">
+    <%= f.label :img_url, '选择图片：', class: "item" %>
+    <%= f.file_field :img_url, accept: 'image/png,image/gif,image/jpeg', class: "item" %>
+  </div>
+  <div class="item-group">
+    <%= f.label :comments, '评论：' %>
+    <%= f.text_area :comments, rows: 5, cols: 40 %>
+  </div>
+  <div class="item-group">
+    <%= f.label :user_id, '鉴证师：' %>
+    <%= f.collection_select :user_id, User.all, :id, :ename, prompt: "Select one user", selected: session[:user_id] %>
+  </div>
+  <div class="actions">
+    <%= f.submit '确定', class: "btn btn-success" %>&nbsp;&nbsp;<%= link_to 'Back', certificates_path %>
+  </div>
+<% end %>
