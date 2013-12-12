@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211090656) do
+ActiveRecord::Schema.define(version: 20131211103224) do
 
   create_table "roles", force: true do |t|
     t.string   "desc"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20131211090656) do
     t.string   "ctitle"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role_id"
   end
 
 end

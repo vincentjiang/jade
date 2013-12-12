@@ -1,8 +1,10 @@
 class User < ActiveRecord::Base
 
+	belongs_to :role
+
 	attr_reader :password
 	attr_accessor :password_confirmation
-	validates_presence_of :email, :password, :password_confirmation , on: :create, message: "不能为空"
+	validates_presence_of :email, :password, :password_confirmation, :ename, :etitle, :role_id, on: :create, message: "不能为空"
 	validates_confirmation_of :password, on: :create, message: "应该一致"
 	validates_uniqueness_of :email, on: :create, message: "登录名不能重复"
 
