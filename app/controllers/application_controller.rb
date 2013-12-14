@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   private
   	def authenticate
-  		if session[:user_id].nil?
+  		unless User.find(session[:user_id])
   			redirect_to login_path, alert: "Please login ..."
   		end
   	end

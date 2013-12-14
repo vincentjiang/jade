@@ -1,38 +1,38 @@
-<h1>Check your details</h1>
+<h1>用户基本资料</h1>
 
 <div class="object-show">
   <p>
-    <strong>Email: </strong>
+    <strong>邮箱地址：</strong>
     <%= @user.email %>
   </p>
 
   <p>
-    <strong>English name: </strong>
+    <strong>英文名：</strong>
     <%= @user.ename %>
   </p>
 
   <p>
-    <strong>Chinese name: </strong>
+    <strong>中文名：</strong>
     <%= @user.cname %>
   </p>
 
   <p>
-    <strong>English title: </strong>
+    <strong>英文职称：</strong>
     <%= @user.etitle %>
   </p>
 
   <p>
-    <strong>Chinese title: </strong>
+    <strong>中文职称</strong>
     <%= @user.ctitle %>
   </p>
 
   <p>
-    <strong>Role: </strong>
-    <%= @user.role.desc %>
+    <strong>权限：</strong>
+    <%= @user.role %>
   </p>
 </div>
 
 <div class="actions">
-  <%= link_to ' Edit', edit_user_path(@user), class: "btn btn-warning btn-sm fa fa-pencil" %>
-  <%= link_to 'Back', users_path, class: "btn btn-link" %>
+  <%= link_to ' 编辑', edit_user_path(@user), class: "btn btn-warning btn-sm fa fa-pencil" %>
+  <%= link_to '返回', users_path, class: "btn btn-link" %>
 </div>

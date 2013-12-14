@@ -202,6 +202,6 @@
     <%= f.collection_select :user_id, User.all, :id, :ename, prompt: "Select one user", selected: session[:user_id] %>
   </div>
   <div class="actions">
-    <%= f.submit '确定', class: "btn btn-success" %>&nbsp;&nbsp;<%= link_to 'Back', certificates_path %>
+    <%= f.submit '确认', class: "btn btn-success" %>&nbsp;&nbsp;<%= link_to '返回', certificates_path %>
   </div>
 <% end %>

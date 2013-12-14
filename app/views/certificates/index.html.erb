@@ -1,16 +1,16 @@
-<h1>Listing certificates</h1>
+<h1>鉴证书列表</h1>
 
 <div class="table-responsive">
   <table class="table table-hover table-condensed">
     <thead>
       <tr>
-        <th>Report no</th>
+        <th>编号</th>
         <th>Is hoklas</th>
-        <th>Date test</th>
-        <th>Date issue</th>
-        <th>Img url</th>
-        <th>User</th>
-        <th>Action</th>
+        <th>测试日期</th>
+        <th>签发日期</th>
+        <th>图片</th>
+        <th>鉴定师</th>
+        <th>动作</th>
       </tr>
     </thead>
 
@@ -24,9 +24,9 @@
           <td><%= certificate.img_url %></td>
           <td><%= certificate.user_id %></td>
           <td>
-            <%= link_to ' Show', certificate, class: "btn btn-info btn-xs fa fa-eye" %>
-            <%= link_to ' Edit', edit_certificate_path(certificate), class: "btn btn-warning btn-xs fa fa-pencil" %>
-            <%= link_to ' Destroy', certificate, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs fa fa-trash-o" %>
+            <%= link_to ' 查看', certificate, class: "btn btn-info btn-xs fa fa-eye" %>
+            <%= link_to ' 编辑', edit_certificate_path(certificate), class: "btn btn-warning btn-xs fa fa-pencil" %>
+            <%= link_to ' 删除', certificate, method: :delete, data: { confirm: "您真的想删除 #{certificate.report_no} 吗？" }, class: "btn btn-danger btn-xs fa fa-trash-o" %>
           </td>
         </tr>
       <% end %>
@@ -36,4 +36,4 @@
 
 <br>
 
-<%= link_to ' New Certificate', new_certificate_path, class: "btn btn-success btn-sm fa fa-user" %>
+<%= link_to ' 新建证书', new_certificate_path, class: "btn btn-success btn-sm fa fa-user" %>

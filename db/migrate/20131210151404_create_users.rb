@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :cname
       t.string :etitle
       t.string :ctitle
+      t.string :role
 
       t.timestamps
     end

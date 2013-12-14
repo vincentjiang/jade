@@ -58,12 +58,6 @@ ActiveRecord::Schema.define(version: 20131212035259) do
     t.datetime "updated_at"
   end
 
-  create_table "roles", force: true do |t|
-    t.string   "desc"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "hashed_password"
@@ -72,9 +66,9 @@ ActiveRecord::Schema.define(version: 20131212035259) do
     t.string   "cname"
     t.string   "etitle"
     t.string   "ctitle"
+    t.string   "role"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "role_id"
   end
 
 end

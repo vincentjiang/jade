@@ -1,11 +1,11 @@
-<h1>Editing user</h1>
+<h1>修改用户</h1>
 
 <%= form_for(@user) do |f| %>
 		<div class="row">
 			<div class="col-sm-4">
 			  <div class="form-group">
-			    <%= f.label :email %><br>
-			    <%= f.text_field :email, class: "form-control", placeholder: "Your Email", requred: true, focus: true %>
+			    <%= f.label :email, "邮箱地址：" %><br>
+			    <%= f.text_field :email, class: "form-control", placeholder: "yourname@example.com", requred: true, focus: true %>
 			  </div>
 			</div>
 		</div>
@@ -13,29 +13,14 @@
 		<div class="row">
 			<div class="col-sm-4">
 			  <div class="form-group">
-			    <%= f.label :ename %><br>
-			    <%= f.text_field :ename, class: "form-control", placeholder: "Your english name", requre: true %>
+			    <%= f.label :ename, "英文名：" %><br>
+			    <%= f.text_field :ename, class: "form-control", placeholder: "English name", requre: true %>
 			  </div>
 			</div>
 			<div class="col-sm-4">
 			  <div class="form-group">
-			    <%= f.label :cname %><br>
-			    <%= f.text_field :cname, class: "form-control", placeholder: "Your chinese name", requre: true %>
-			  </div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-sm-4">
-			  <div class="form-group">
-			    <%= f.label :etitle %><br>
-			    <%= f.text_field :etitle, class: "form-control", placeholder: "Your english title", requre: true %>
-			  </div>
-			</div>
-			<div class="col-sm-4">
-			  <div class="form-group">
-			    <%= f.label :ctitle %><br>
-			    <%= f.text_field :ctitle, class: "form-control", placeholder: "Your chinese title", requre: true %>
+			    <%= f.label :cname, "英文职称：" %><br>
+			    <%= f.text_field :cname, class: "form-control", placeholder: "中文名", requre: true %>
 			  </div>
 			</div>
 		</div>
@@ -43,14 +28,29 @@
 		<div class="row">
 			<div class="col-sm-4">
 			  <div class="form-group">
-			    <%= f.label :role_id %><br>
-			    <%= f.select :role_id, Role.all.collect {|r| [r.desc, r.id]}, class: "form-control", prompt: "Select one role", requred: true %>
+			    <%= f.label :etitle, "英文职称：" %><br>
+			    <%= f.text_field :etitle, class: "form-control", placeholder: "English title", requre: true %>
+			  </div>
+			</div>
+			<div class="col-sm-4">
+			  <div class="form-group">
+			    <%= f.label :ctitle, "中文职称：" %><br>
+			    <%= f.text_field :ctitle, class: "form-control", placeholder: "中文职称", requre: true %>
+			  </div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-4">
+			  <div class="form-group">
+			    <%= f.label :role, "权限：" %><br>
+			    <%= f.select :role, User::ROLES, class: "form-control", selected: @user.role, requred: true %>
 			  </div>
 			</div>
 		</div>
 
 		<div class="actions">
-			<%= f.submit 'Submit', class: "btn btn-success" %>&nbsp;&nbsp;<%= link_to 'Back', users_path, class: "btn btn-link" %>
+			<%= f.submit '确认', class: "btn btn-success" %>&nbsp;&nbsp;<%= link_to '返回', users_path, class: "btn btn-link" %>
 		</div>
 
 	<% end %>

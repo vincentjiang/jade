@@ -1,8 +1,6 @@
 Jade::Application.routes.draw do
   resources :certificates
 
-  resources :roles
-
   get 'index' => "pages#index"
   get 'about' => "pages#about"
   get 'password' => "password#new"

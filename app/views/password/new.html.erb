@@ -1,31 +1,31 @@
-<h1>Updating password</h1>
+<h1>更改密码</h1>
 
 <%= form_tag update_password_path, class: "form-horizontal" do  %>
 
   <div class="form-group">
-    <%= label_tag 'password_current', 'Current password', class: "control-label col-sm-2" %>
+    <%= label_tag 'password_current', '当前密码：', class: "control-label col-sm-2" %>
     <div class="col-sm-4">
-    	<%= password_field_tag :password_current, params[:password_current], class: "form-control", placeholder: "current password", required: true, autofocus: true %>
+    	<%= password_field_tag :password_current, params[:password_current], class: "form-control", placeholder: "输入当前密码", required: true, autofocus: true %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= label_tag 'password_new', 'New password', class: "control-label col-sm-2" %>
+    <%= label_tag 'password_new', '新密码：', class: "control-label col-sm-2" %>
     <div class="col-sm-4">
-    	<%= password_field_tag :password_new, params[:password_new], class: "form-control", placeholder: "new password", required: true %>
+    	<%= password_field_tag :password_new, params[:password_new], class: "form-control", placeholder: "新密码", required: true %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= label_tag 'password_new_confirmation', 'Verify password', class: "control-label col-sm-2" %>
+    <%= label_tag 'password_new_confirmation', '确认新密码：', class: "control-label col-sm-2" %>
     <div class="col-sm-4">
-    	<%= password_field_tag :password_new_confirmation, params[:password_new_confirmation], class: "form-control", placeholder: "new password again", required: true %>
+    	<%= password_field_tag :password_new_confirmation, params[:password_new_confirmation], class: "form-control", placeholder: "确认新密码", required: true %>
     </div>
   </div>
 
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <%= submit_tag 'Submit', class: "btn btn-success" %> <%= link_to 'Back', root_path, class: "btn btn-link" %>
+      <%= submit_tag '确认', class: "btn btn-success" %> <%= link_to '返回', root_path, class: "btn btn-link" %>
     </div>
   </div>
 

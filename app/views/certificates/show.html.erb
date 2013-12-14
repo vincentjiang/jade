@@ -1,28 +1,28 @@
-<h1>Check the report details</h1>
+<h1>证书资料</h1>
 
 <div class="object-show">
   <p>
-    <strong>Report no:</strong>
+    <strong>证书编号：</strong>
     <%= @certificate.report_no %>
   </p>
 
   <p>
-    <strong>Is hoklas:</strong>
+    <strong>翡翠鉴定报告or翡翠鉴定证书：</strong>
     <%= @certificate.is_hoklas %>
   </p>
 
   <p>
-    <strong>Date test:</strong>
+    <strong>测试日期：</strong>
     <%= @certificate.date_test %>
   </p>
 
   <p>
-    <strong>Date issue:</strong>
+    <strong>签发日期：</strong>
     <%= @certificate.date_issue %>
   </p>
 
   <p>
-    <strong>Shape:</strong>
+    <strong>形状：</strong>
     <%= @certificate.shape %>
   </p>
 
@@ -32,177 +32,177 @@
   </p>
 
   <p>
-    <strong>Cut:</strong>
+    <strong>车工：</strong>
     <%= @certificate.cut %>
   </p>
 
   <p>
-    <strong>Dimensions1:</strong>
+    <strong>尺寸一：</strong>
     <%= @certificate.dimensions1 %>
   </p>
 
   <p>
-    <strong>Dimensions2:</strong>
+    <strong>尺寸二：</strong>
     <%= @certificate.dimensions2 %>
   </p>
 
   <p>
-    <strong>Dimensions3:</strong>
+    <strong>尺寸三：</strong>
     <%= @certificate.dimensions3 %>
   </p>
 
   <p>
-    <strong>Dimension:</strong>
+    <strong>尺寸：</strong>
     <%= @certificate.dimension %>
   </p>
 
   <p>
-    <strong>Weight:</strong>
+    <strong>重量：</strong>
     <%= @certificate.weight %>
   </p>
 
   <p>
-    <strong>Weight desc:</strong>
+    <strong>重量描述：</strong>
     <%= @certificate.weight_desc %>
   </p>
 
   <p>
-    <strong>Transparency:</strong>
+    <strong>透明度：</strong>
     <%= @certificate.transparency %>
   </p>
 
   <p>
-    <strong>Deep1:</strong>
+    <strong>深浅度一：</strong>
     <%= @certificate.deep1 %>
   </p>
 
   <p>
-    <strong>Color1:</strong>
+    <strong>颜色一：</strong>
     <%= @certificate.color1 %>
   </p>
 
   <p>
-    <strong>Deep2:</strong>
+    <strong>深浅度二：</strong>
     <%= @certificate.deep2 %>
   </p>
 
   <p>
-    <strong>Color2:</strong>
+    <strong>颜色二：</strong>
     <%= @certificate.color2 %>
   </p>
 
   <p>
-    <strong>Deep3:</strong>
+    <strong>深浅度三：</strong>
     <%= @certificate.deep3 %>
   </p>
 
   <p>
-    <strong>Color3:</strong>
+    <strong>颜色三：</strong>
     <%= @certificate.color3 %>
   </p>
 
   <p>
-    <strong>Distribution:</strong>
+    <strong>分布：</strong>
     <%= @certificate.distribution %>
   </p>
 
   <p>
-    <strong>Polariscope:</strong>
+    <strong>偏光仪：</strong>
     <%= @certificate.polariscope %>
   </p>
 
   <p>
-    <strong>Refractive index:</strong>
+    <strong>折射率：</strong>
     <%= @certificate.refractive_index %>
   </p>
 
   <p>
-    <strong>Is measure:</strong>
+    <strong>是否测量：</strong>
     <%= @certificate.is_measure %>
   </p>
 
   <p>
-    <strong>Ww1:</strong>
+    <strong>比重一：</strong>
     <%= @certificate.ww1 %>
   </p>
 
   <p>
-    <strong>Ww2:</strong>
+    <strong>比重二：</strong>
     <%= @certificate.ww2 %>
   </p>
 
   <p>
-    <strong>Ww3:</strong>
+    <strong>比重三：</strong>
     <%= @certificate.ww3 %>
   </p>
 
   <p>
-    <strong>Sg:</strong>
+    <strong>SG值：</strong>
     <%= @certificate.sg %>
   </p>
 
   <p>
-    <strong>Uv lw:</strong>
+    <strong>荧光线长波：</strong>
     <%= @certificate.uv_lw %>
   </p>
 
   <p>
-    <strong>Uv sw:</strong>
+    <strong>荧光线短波：</strong>
     <%= @certificate.uv_sw %>
   </p>
 
   <p>
-    <strong>Chelsea color filter:</strong>
+    <strong>滤色镜：</strong>
     <%= @certificate.chelsea_color_filter %>
   </p>
 
   <p>
-    <strong>Visible spectrum:</strong>
+    <strong>可见光谱：</strong>
     <%= @certificate.visible_spectrum %>
   </p>
 
   <p>
-    <strong>Magnification:</strong>
+    <strong>放大观察：</strong>
     <%= @certificate.magnification %>
   </p>
 
   <p>
-    <strong>Surface feature:</strong>
+    <strong>表面特征：</strong>
     <%= @certificate.surface_feature %>
   </p>
 
   <p>
-    <strong>Infrared spectrum:</strong>
+    <strong>红外线光谱：</strong>
     <%= @certificate.infrared_spectrum %>
   </p>
 
   <p>
-    <strong>Level:</strong>
+    <strong>翡翠级别：</strong>
     <%= @certificate.level %>
   </p>
 
   <p>
-    <strong>Conclusion:</strong>
+    <strong>结论：</strong>
     <%= @certificate.conclusion %>
   </p>
 
   <p>
-    <strong>Comments:</strong>
+    <strong>评论：</strong>
     <%= @certificate.comments %>
   </p>
 
   <p>
-    <strong>Img url:</strong>
+    <strong>图片路径：</strong>
     <%= @certificate.img_url %>
   </p>
 
   <p>
-    <strong>User:</strong>
+    <strong>鉴证师：</strong>
     <%= @certificate.user.ename %>
   </p>
 </div>
 
 <div class="actions">
-  <%= link_to ' Edit', edit_certificate_path(@certificate), class: "btn btn-warning btn-sm fa fa-pencil" %>
-  <%= link_to 'Back', certificates_path, class: "btn btn-link" %>
+  <%= link_to ' 编辑', edit_certificate_path(@certificate), class: "btn btn-warning btn-sm fa fa-pencil" %>
+  <%= link_to '返回', certificates_path, class: "btn btn-link" %>
 </div>
