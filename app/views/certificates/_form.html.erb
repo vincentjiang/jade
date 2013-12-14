@@ -27,12 +27,12 @@
     <label for="">形状及车工：</label>
     <div class="item">
       <%= f.label :shape, '形状：' %>
-      <%= f.select :shape, %w{旦形 佛公 马鞍面 怀古/圆扣 梨形 观音 长方形 筒珠/蘭豆 心/杏心形 圆形 方形 圆珠/圆环 榄尖形 花件 十字架 首饰套装/摆件} %>
-      <%= f.select :object, %w{戒指 吊坠 耳环 襟针 手链 颈链 袖扣 手镯} %>
+      <%= f.select :shape, Certificate::SHAPE %>
+      <%= f.select :object, Certificate::OBJECT %>
     </div>
     <div class="item">
       <%= f.label :cut, '车工：' %>
-      <%= f.select :cut, %w{卜面 平面 拱面} %>
+      <%= f.select :cut, Certificate::CUT %>
     </div>
   </div>
 
@@ -65,11 +65,11 @@
   <div class="item-group">
     <div class="item">
       <%= f.label :transparency, '透明度：' %>
-      <%= f.select :transparency, %w{半透明 全透明 不透明 未能测量} %>
+      <%= f.select :transparency, Certificate::TRANSPARENCY %>
     </div>
     <div class="item">
       <%= f.label :polariscope, '偏光仪：' %>
-      <%= f.select :polariscope, %w{多晶质 各向异性 各向同性 异常消光 未能测量} %>
+      <%= f.select :polariscope, Certificate::POLARISCOPE %>
     </div>
     <div class="item">
       <%= f.label :refractive_index, '折射率：' %>
@@ -81,21 +81,21 @@
     <label for="">颜色深浅度：</label>
     <div class="item">
       <%= f.label :deep1, '深浅度一：' %>
-      <%= f.select :deep1, %w{淡 浅 绿 鲜 浓 深 暗} %>
+      <%= f.select :deep1, Certificate::DEEP1 %>
       <%= f.label :color1, '颜色一：' %>
-      <%= f.select :color1, %w{绿色 黄绿色 蓝绿色} %>
+      <%= f.select :color1, Certificate::COLOR1 %>
       <%= f.label :deep2, '深浅度二：' %>
-      <%= f.select :deep2, %w{淡 浅 绿 鲜 浓 深 暗} %>
+      <%= f.select :deep2, Certificate::DEEP2 %>
       <%= f.label :color2, '颜色二：' %>
-      <%= f.select :color2, %w{绿色 黄绿色 蓝绿色} %>
+      <%= f.select :color2, Certificate::COLOR2 %>
       <%= f.label :deep3, '深浅度三：' %>
-      <%= f.select :deep3, %w{淡 浅 绿 鲜 浓 深 暗} %>
+      <%= f.select :deep3, Certificate::DEEP3 %>
       <%= f.label :color3, '颜色三：' %>
-      <%= f.select :color3, %w{绿色 黄绿色 蓝绿色} %>
+      <%= f.select :color3, Certificate::COLOR3 %>
     </div>
     <div class="item">
       <%= f.label :distribution, '分布：' %>
-      <%= f.select :distribution, %w{均匀 不均匀 塊状 脈状 点状} %>
+      <%= f.select :distribution, Certificate::DISTRIBUTION %>
     </div>
   </div>
 
@@ -162,8 +162,8 @@
   </div>
   <div class="item-group">
     <label for="">放大观察（表面特征）：</label>
-      <%= f.select :magnification, %w{粒状及纤维状晶体结构（中粒） 纤维状晶体结构（幼粒） 粒状晶体结构（粗粒）} %>
-      <%= f.select :surface_feature, %w{铁渗 翠性 小坑洞 橙皮纹 微小裂纹 沟漕} %>
+      <%= f.select :magnification, Certificate::MAGNIFICATION %>
+      <%= f.select :surface_feature, Certificate::SURFACE_FEATURE %>
   </div>
 
   <div class="item-group">
