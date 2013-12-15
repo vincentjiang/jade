@@ -22,7 +22,7 @@
           <td><%= certificate.date_test %></td>
           <td><%= certificate.date_issue %></td>
           <td><%= certificate.img_url %></td>
-          <td><%= certificate.user_id %></td>
+          <td><%= certificate.user.ename %></td>
           <td>
             <%= link_to ' 查看', certificate, class: "btn btn-info btn-xs fa fa-eye" %>
             <%= link_to ' 编辑', edit_certificate_path(certificate), class: "btn btn-warning btn-xs fa fa-pencil" %>

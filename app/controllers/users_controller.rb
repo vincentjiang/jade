@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  # skip_before_filter :authenticate
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -60,12 +59,13 @@ class UsersController < ApplicationController
   def destroy
     unless @user == User.find(session[:user_id])
       @user.destroy
-      respond_to do |format|
-        format.html { redirect_to users_url }
-        format.json { head :no_content }
-      end
+      flash[:notice] = "鉴定师删除成功"
     else
-      redirect_to :back, alert: "不能删除自己。"
+      flash[:alert] =  "不能删除自己"
+    end
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
     end
   end
 
