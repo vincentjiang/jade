@@ -5,7 +5,6 @@
     <thead>
       <tr>
         <th>编号</th>
-        <th>Is hoklas</th>
         <th>测试日期</th>
         <th>签发日期</th>
         <th>图片</th>
@@ -18,7 +17,6 @@
       <% @certificates.each do |certificate| %>
         <tr>
           <td><%= certificate.report_no %></td>
-          <td><%= certificate.is_hoklas %></td>
           <td><%= certificate.date_test %></td>
           <td><%= certificate.date_issue %></td>
           <td><%= certificate.img_url %></td>
