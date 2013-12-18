@@ -1,16 +1,22 @@
 <%# add navigation right links to this file %>
 <% if session[:user_id] %>
+
+	<li>
+		<a href="<%= certificates_path %>">
+			<i class="fa fa-file"></i> 鉴证管理
+		</a>
+	</li>
+
 	<% if User.find(session[:user_id]).role == "管理员" %>
-		<li>
-			<a href="<%= certificates_path %>">
-				<i class="fa fa-file"></i> 鉴证管理
-			</a>
-		</li>
 		<li>
 			<a href="<%= users_path %>">
 				<i class="fa fa-user"></i> 用户管理
 			</a>
 		</li>
 	<% end %>
+
 <% end %>
-<li><a href="<%= about_path %>"><i class="fa fa-info-circle"></i> 关于</a></li>
+
+<li>
+	<a href="<%= about_path %>"><i class="fa fa-info-circle"></i> 关于</a>
+</li>
