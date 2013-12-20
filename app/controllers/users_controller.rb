@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_filter :is_admin
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -30,7 +32,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        Mailer.welcome_email(@user).deliver
+        format.html { redirect_to @user, notice: '鉴证师创建成功' }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -45,7 +48,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       user_params = params.require(:user).permit(:email, :ename, :cname, :etitle, :ctitle, :role)
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: '鉴证书修改成功' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -61,7 +64,7 @@ class UsersController < ApplicationController
     if @user == User.find_by_id(session[:user_id])
       flash[:alert] = "不能删除自己"
     elsif @user.certificates.count != 0
-      flash[:alert] = "此用户正被证书使用中，不能删除"
+      flash[:alert] = "此鉴证师正被证书使用中，不能删除"
     else
       @user.destroy
       flash[:notice] = "鉴定师删除成功"

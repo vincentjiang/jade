@@ -16,4 +16,10 @@ class ApplicationController < ActionController::Base
   		end
   	end
 
+    def is_admin
+      unless User.find_by_id(session[:user_id]).role == "管理员"
+        redirect_to index_path, alert: "您不是管理员"
+      end
+    end
+
 end
