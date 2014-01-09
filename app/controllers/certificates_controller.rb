@@ -1,6 +1,18 @@
 class CertificatesController < ApplicationController
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
 
+  def mkpdf
+    unless Dir.exist?("pdf")
+      Dir.mkdir("pdf")
+    end
+    @file_name = "hello.pdf"
+    @pdf_file = "pdf/" + @file_name
+    Prawn::Document.generate(@pdf_file) do |pdf|
+      pdf.text("Hello Prawn!")
+    end
+    send_file(@pdf_file)
+  end
+
   # GET /certificates
   # GET /certificates.json
   def index

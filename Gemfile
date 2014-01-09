@@ -1,10 +1,10 @@
 source 'http://ruby.taobao.org'
 
-ruby '2.0.0'
-
 gem 'bootstrap-sass'
 gem 'rails_layout'
 gem 'font-awesome-sass'
+
+gem 'prawn'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
