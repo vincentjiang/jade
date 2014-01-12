@@ -21,7 +21,7 @@
           <td><%= certificate.user.ename %></td>
           <td>
             <%= link_to ' 查看', certificate, class: "btn btn-info btn-xs fa fa-eye" %>
-            <%= link_to ' 下载', mkpdf_path, class: "btn btn-primary btn-xs fa fa-download" %>
+            <%= link_to ' 下载', mkpdf_path(certificate), class: "btn btn-primary btn-xs fa fa-download" %>
             <%= link_to ' 编辑', edit_certificate_path(certificate), class: "btn btn-warning btn-xs fa fa-pencil" %>
             <%= link_to ' 删除', certificate, method: :delete, data: { confirm: "您真的想删除 #{certificate.report_no} 吗？" }, class: "btn btn-danger btn-xs fa fa-trash-o" %>
           </td>

@@ -9,7 +9,7 @@ Jade::Application.routes.draw do
   post 'login' => "sessions#create"
   get 'logout' => "sessions#destroy"
 
-  get 'mkpdf' => "certificates#mkpdf"
+  get 'mkpdf/:certificate' => "certificates#mkpdf", as: "mkpdf"
   
   resources :users
 

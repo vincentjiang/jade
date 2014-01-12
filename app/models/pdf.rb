@@ -1,3 +1,0 @@
-class Pdf
-	
-end

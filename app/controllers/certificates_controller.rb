@@ -1,16 +1,24 @@
 class CertificatesController < ApplicationController
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
 
+  # make pdf and send pdf to user for download
   def mkpdf
+    
+    # if no pdf folder, here will auto create the pdf folder
     unless Dir.exist?("pdf")
       Dir.mkdir("pdf")
     end
-    @file_name = "hello.pdf"
+
+    @certificate = Certificate.find(params[:certificate])
+    @file_name = "#{User.find_by_id(session[:user_id]).ename}.pdf"
     @pdf_file = "pdf/" + @file_name
     Prawn::Document.generate(@pdf_file) do |pdf|
-      pdf.text("Hello Prawn!")
+      pdf.text("#{@certificate.report_no}")
+      pdf.text("#{@certificate.id}")
     end
-    send_file(@pdf_file)
+    send_file(@pdf_file,
+              filename: "#{@certificate.report_no}.pdf",
+              type: "application/pdf")
   end
 
   # GET /certificates
@@ -28,7 +36,6 @@ class CertificatesController < ApplicationController
   def new
     @certificate = Certificate.new
   end
-
   # GET /certificates/1/edit
   def edit
   end
