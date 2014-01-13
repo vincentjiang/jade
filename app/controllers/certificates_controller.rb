@@ -1,26 +1,6 @@
 class CertificatesController < ApplicationController
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
 
-  # make pdf and send pdf to user for download
-  def mkpdf
-    
-    # if no pdf folder, here will auto create the pdf folder
-    unless Dir.exist?("pdf")
-      Dir.mkdir("pdf")
-    end
-
-    @certificate = Certificate.find(params[:certificate])
-    @file_name = "#{User.find_by_id(session[:user_id]).ename}.pdf"
-    @pdf_file = "pdf/" + @file_name
-    Prawn::Document.generate(@pdf_file) do |pdf|
-      pdf.text("#{@certificate.report_no}")
-      pdf.text("#{@certificate.id}")
-    end
-    send_file(@pdf_file,
-              filename: "#{@certificate.report_no}.pdf",
-              type: "application/pdf")
-  end
-
   # GET /certificates
   # GET /certificates.json
   def index
@@ -30,6 +10,21 @@ class CertificatesController < ApplicationController
   # GET /certificates/1
   # GET /certificates/1.json
   def show
+    # if no pdf folder, here will auto create the pdf folder
+    unless Dir.exist?("pdf")
+      Dir.mkdir("pdf")
+    end
+
+    @file_name = "#{User.find_by_id(session[:user_id]).ename}.pdf"
+    @pdf_file = "pdf/" + @file_name
+    Prawn::Document.generate(@pdf_file) do |pdf|
+      pdf.text("#{@certificate.report_no}")
+      pdf.text("这是一个PDF测试文件")
+    end
+    send_file(@pdf_file,
+              filename: "#{@certificate.report_no}.pdf",
+              type: "application/pdf",
+              disposition: "inline")
   end
 
   # GET /certificates/new
