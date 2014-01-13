@@ -19,7 +19,7 @@ class CertificatesController < ApplicationController
     @pdf_file = "pdf/" + @file_name
     Prawn::Document.generate(@pdf_file) do |pdf|
       pdf.text("#{@certificate.report_no}")
-      pdf.text("这是一个PDF测试文件")
+      pdf.text("这是一个PDF测试文件123")
     end
     send_file(@pdf_file,
               filename: "#{@certificate.report_no}.pdf",
