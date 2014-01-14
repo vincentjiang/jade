@@ -1,4 +1,6 @@
 class CertificatesController < ApplicationController
+  FONTS_PATH = "/SYSTEM/Library/Fonts/"
+
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
 
   # GET /certificates
@@ -18,8 +20,15 @@ class CertificatesController < ApplicationController
     @file_name = "#{User.find_by_id(session[:user_id]).ename}.pdf"
     @pdf_file = "pdf/" + @file_name
     Prawn::Document.generate(@pdf_file) do |pdf|
-      pdf.text("#{@certificate.report_no}")
-      pdf.text("这是一个PDF测试文件123")
+      pdf.font_families["msyh"] = {
+        normal: {file: "#{FONTS_PATH}/msyh.ttf"},
+        bold: {file: "#{FONTS_PATH}/msyhbd.ttf"}
+      }
+      pdf.font("msyh") do
+        pdf.text("#{@certificate.report_no}")
+        pdf.text("这是一个PDF测试文件123")
+      end
+
     end
     send_file(@pdf_file,
               filename: "#{@certificate.report_no}.pdf",
