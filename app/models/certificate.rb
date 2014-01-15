@@ -1,5 +1,7 @@
 class Certificate < ActiveRecord::Base
 
+	mount_uploader :img_url, ImgUrlUploader
+
 	SHAPE = %w{旦形 佛公 马鞍面 怀古/圆扣 梨形 观音 长方形 筒珠/蘭豆 心/杏心形 圆形 方形 圆珠/圆环 榄尖形 花件 十字架 首饰套装/摆件}
 	OBJECT = %w{戒指 吊坠 耳环 襟针 手链 颈链 袖扣 手镯}
 	CUT = %w{卜面 平面 拱面}

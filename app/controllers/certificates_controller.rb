@@ -19,15 +19,19 @@ class CertificatesController < ApplicationController
 
     @file_name = "#{User.find_by_id(session[:user_id]).ename}.pdf"
     @pdf_file = "pdf/" + @file_name
+
     Prawn::Document.generate(@pdf_file) do |pdf|
       pdf.font_families["msyh"] = {
         normal: {file: "#{FONTS_PATH}/msyh.ttf"},
         bold: {file: "#{FONTS_PATH}/msyhbd.ttf"}
       }
       pdf.font("msyh") do
-        pdf.text("#{@certificate.report_no}")
-        pdf.text("这是一个PDF测试文件123")
+        pdf.text "#{@certificate.report_no}", :align => :left
+        pdf.text "#{@certificate.date_test}", :align => :center
+        pdf.text "这是一个PDF测试文件123", :align => :right
       end
+
+      pdf.image "public/#{@certificate.img_url}", width: 100, :position  => :right, :vposition => 200 if @certificate.img_url.present?
 
     end
     send_file(@pdf_file,

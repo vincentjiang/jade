@@ -4,7 +4,11 @@ gem 'bootstrap-sass'
 gem 'rails_layout'
 gem 'font-awesome-sass'
 
+# PDF
 gem 'prawn'
+
+# upload
+gem 'carrierwave'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
