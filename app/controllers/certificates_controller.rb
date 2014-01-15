@@ -1,5 +1,5 @@
 class CertificatesController < ApplicationController
-  FONTS_PATH = "/SYSTEM/Library/Fonts/"
+  FONTS_PATH = "public/assets/fonts/"
 
   before_action :set_certificate, only: [:show, :edit, :update, :destroy]
 
