@@ -55,8 +55,8 @@ class CertificatesController < ApplicationController
 
     respond_to do |format|
       if @certificate.save
-        format.html { redirect_to @certificate, notice: '证书创建成功' }
-        format.json { render action: 'show', status: :created, location: @certificate }
+        format.html { redirect_to certificates_path, notice: '证书创建成功' }
+        format.json { render action: 'index', status: :created, location: @certificate }
       else
         format.html { render action: 'new' }
         format.json { render json: @certificate.errors, status: :unprocessable_entity }
@@ -69,7 +69,7 @@ class CertificatesController < ApplicationController
   def update
     respond_to do |format|
       if @certificate.update(certificate_params)
-        format.html { redirect_to @certificate, notice: '证书修改成功' }
+        format.html { redirect_to certificates_path, notice: '证书修改成功' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
