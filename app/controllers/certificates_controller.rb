@@ -37,7 +37,7 @@ class CertificatesController < ApplicationController
 
       pdf.font("msyh", :size => 10) do
         pdf.bounding_box([0, 270.mm], :width => 85.mm, :height => 40.mm) do
-         pdf.image "app/assets/images/pdf_header.jpg", width: 250 if @certificate.img_url.present?
+         pdf.image "#{Rails.root}/app/assets/images/pdf_header.jpg", width: 250
         end
 
         pdf.bounding_box([0, 230.mm], :width => 180.mm, :height => 10.mm) do
