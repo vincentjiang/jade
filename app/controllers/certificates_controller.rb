@@ -20,18 +20,99 @@ class CertificatesController < ApplicationController
     @file_name = "#{User.find_by_id(session[:user_id]).ename}.pdf"
     @pdf_file = "pdf/" + @file_name
 
-    Prawn::Document.generate(@pdf_file) do |pdf|
+    require "prawn/measurement_extensions"
+
+    Prawn::Document.generate(
+      @pdf_file,
+      left_margin: 20.mm,
+      right_margin: 15.mm,
+      top_margin: 18.mm,
+      bottom_margin: 15.mm,
+      :page_size => 'A4') do |pdf|
+
       pdf.font_families["msyh"] = {
         normal: {file: "#{FONTS_PATH}/msyh.ttf"},
         bold: {file: "#{FONTS_PATH}/msyhbd.ttf"}
       }
-      pdf.font("msyh") do
-        pdf.text "#{@certificate.report_no}", :align => :left
-        pdf.text "#{@certificate.date_test}", :align => :center
-        pdf.text "这是一个PDF测试文件123", :align => :right
-      end
 
-      pdf.image "public/#{@certificate.img_url}", width: 100, :position  => :right, :vposition => 200 if @certificate.img_url.present?
+      pdf.font("msyh", :size => 10) do
+        pdf.bounding_box([0, 270.mm], :width => 85.mm, :height => 40.mm) do
+         pdf.image "app/assets/images/pdf_header.jpg", width: 250 if @certificate.img_url.present?
+        end
+
+        pdf.bounding_box([0, 230.mm], :width => 180.mm, :height => 10.mm) do
+          # pdf.stroke_bounds
+          pdf.text "翡翠鉴定报告        Fei Cui Testing Report"
+        end
+
+        pdf.bounding_box([10, 220.mm], :width => 85.mm, :height => 10.mm) do
+          pdf.text "鉴定结果        Test Result"
+        end
+
+        pdf.bounding_box([10, 210.mm], :width => 110.mm, :height => 125.mm) do
+          pdf.text "这里"
+        end
+
+        pdf.bounding_box([120.mm, 210.mm], :width => 60.mm, :height => 125.mm) do
+          pdf.stroke_bounds
+          pdf.text "这里"
+        end
+
+        pdf.bounding_box([10.mm, 80.mm], :width => 80.mm, :height => 60.mm) do
+          pdf.stroke_bounds
+          pdf.text "这里"
+        end
+
+        pdf.bounding_box([100.mm, 60.mm], :width => 80.mm, :height => 40.mm) do
+          pdf.stroke_bounds
+          pdf.text "这里"
+        end
+
+        pdf.bounding_box([10.mm, 15.mm], :width => 80.mm, :height => 10.mm) do
+          pdf.stroke_bounds
+          pdf.text "红外线光谱"
+        end
+
+        pdf.bounding_box([100.mm, 15.mm], :width => 80.mm, :height => 10.mm) do
+          pdf.stroke_bounds
+          pdf.text "这里"
+        end
+
+        pdf.bounding_box([80.mm, 10.mm], :width => 30.mm, :height => 10.mm) do
+          pdf.stroke_bounds
+          pdf.text "这里"
+        end
+
+
+        # pdf.image "app/assets/images/pdf_header.jpg", width: 250, :at => [100, 100] if @certificate.img_url.present?
+
+        # pdf.move_down 4.mm
+
+        # pdf.font("msyh", :size => 14, :style => :bold) do
+        #   pdf.text "翡翠鉴定报告        Fei Cui Testing Report"
+        # end
+
+        # pdf.move_down 8.mm
+
+        # pdf.text "鉴定结果   Testing Result", :size => 12
+
+        # pdf.move_down 4.mm
+
+        # data = [["形状及琢型", "Shape and Cut", "佛公吊坠"],
+        #   ["", "", "Buddha Pendant"],
+        #   ["形状及琢型", "Shape and Cut", "佛公吊坠"],
+        #   ["", "", "Buddha Pendant"],
+        #   ["形状及琢型", "Shape and Cut", "佛公吊坠"],
+        #   ["", "", "Buddha Pendant"]]
+
+        # pdf.table data do |t|
+        #   t.cells.border_width = 0
+        #   t.cells.style :padding_left => 0, :padding_bottom => 0
+        # end
+
+        # pdf.start_new_page
+
+      end
 
     end
     send_file(@pdf_file,
@@ -83,9 +164,10 @@ class CertificatesController < ApplicationController
   def destroy
     @certificate.destroy
     respond_to do |format|
-      format.html { redirect_to certificates_url }
+      format.html { redirect_to certificates_url, notice: "删除 #{@certificate.report_no} 证书成功" }
       format.json { head :no_content }
     end
+    Dir.rmdir("public/uploads/certificate/img_url/#{@certificate.id}") if Dir.exist?("public/uploads/certificate/img_url/#{@certificate.id}")
   end
 
   private
