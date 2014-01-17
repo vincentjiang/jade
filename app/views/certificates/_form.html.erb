@@ -53,7 +53,7 @@
     <div class="item">
       <%= f.label :weight, '重量：' %>
       <%= f.text_field :weight, size: 4 %>
-      <%= f.radio_button :weight_desc, "A" %>
+      <%= f.radio_button :weight_desc, "A", checked: "checked" %>
       <%= f.label :weight_desc_a, '裸石' %>
       <%= f.radio_button :weight_desc, "B" %>
       <%= f.label :weight_desc_b, '整件饰物' %>
@@ -73,7 +73,7 @@
     </div>
     <div class="item">
       <%= f.label :refractive_index, '折射率：' %>
-      <%= f.text_field :refractive_index, size: 4 %>
+      <%= f.text_field :refractive_index, size: 4, placeholder: 1.66 %>
     </div>
   </div>
   
@@ -122,7 +122,7 @@
     <label for="">荧光效应：</label>
     <div class="item">
       <%= f.label :uv_lw, '荧光线长波：' %>
-      <%= f.radio_button :uv_lw, "A" %>
+      <%= f.radio_button :uv_lw, "A", checked: "checked" %>
       <%= f.label :uv_lw_a, '无' %>
       <%= f.radio_button :uv_lw, "B" %>
       <%= f.label :uv_lw_b, '弱' %>
@@ -133,7 +133,7 @@
     </div>
     <div class="item">
       <%= f.label :uv_sw, '荧光线短波：' %>
-      <%= f.radio_button :uv_sw, "A" %>
+      <%= f.radio_button :uv_sw, "A", checked: "checked" %>
       <%= f.label :uv_sw_a, '无' %>
       <%= f.radio_button :uv_sw, "B" %>
       <%= f.label :uv_sw_b, '弱' %>
@@ -155,7 +155,7 @@
   </div>
   <div class="item-group">
     <%= f.label :visible_spectrum, '可见光谱：' %>
-    <%= f.radio_button :visible_spectrum, "A" %>
+    <%= f.radio_button :visible_spectrum, "A", checked: "checked" %>
     <%= f.label :visible_spectrum_a, '硬玉光谱' %>
     <%= f.radio_button :visible_spectrum, "B" %>
     <%= f.label :visible_spectrum_b, '染色光谱' %>
@@ -169,7 +169,7 @@
   <div class="item-group">
     <div class="item">
       <%= f.label :level, '翡翠级别：' %>
-      <%= f.radio_button :level, "A" %>
+      <%= f.radio_button :level, "A", checked: "checked" %>
       <%= f.label :level_a, 'A' %>
       <%= f.radio_button :level, "B" %>
       <%= f.label :level_b, 'B' %>
@@ -199,7 +199,7 @@
   </div>
   <div class="item-group">
     <%= f.label :user_id, '鉴证师：' %>
-    <%= f.collection_select :user_id, User.all, :id, :ename, prompt: "请选择用户", selected: session[:user_id] %>
+    <%= f.collection_select :user_id, User.all, :id, :ename, prompt: "请选择用户", selected: @certificate.user_id || session[:user_id] %>
   </div>
   <div class="actions">
     <%= f.submit '确认', class: "btn btn-success" %>&nbsp;&nbsp;<%= link_to '返回', certificates_path %>
