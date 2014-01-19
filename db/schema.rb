@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20131212035259) do
     t.decimal  "dimensions1"
     t.decimal  "dimensions2"
     t.decimal  "dimensions3"
-    t.decimal  "dimension"
     t.decimal  "weight"
     t.string   "weight_desc"
     t.string   "transparency"

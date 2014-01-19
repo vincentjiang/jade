@@ -36,16 +36,8 @@ class CertificatesController < ApplicationController
 
         # pdf.stroke_axis :step_length => 20
 
-        pdf.bounding_box([10, 770], :width => 220, :height => 100, :padding => 20) do
-          pdf.image "#{Rails.root}/app/assets/images/pdf_header.jpg", :width => 200, :height => 50
-          pdf.move_down 3
-          pdf.text "香港新界沙田火炭禾穗街15-29号百适第二货仓8楼", :size => 8
-          pdf.move_down 3
-          pdf.text "Unit B, 8/F., Pak Sik Godown No.2, 15-29 Wo Shui Street"
-          pdf.move_down 3
-          pdf.text "Fotan, Shatin, N.T., Hong Kong"
-          pdf.move_down 3
-          pdf.text "Tel(852)2839 1888 Fax(852)2377 9165"
+        pdf.bounding_box([10, 770], :width => 200, :height => 90, :padding => 20) do
+          pdf.image "#{Rails.root}/app/assets/images/pdf_header.jpg", :width => 200, :height => 90
         end
 
         pdf.move_cursor_to 670
@@ -72,11 +64,13 @@ class CertificatesController < ApplicationController
 
         pdf.move_cursor_to 600
 
+        @weight = @certificate.weight < 200 ? @certificate.weight.round(2) : @certificate.weight
+
         data2 = [
           ["形状和琢型", "Shape and Cut", ":", "佛公吊坠"],
           ["", "", "", "Bunddha Pendant"],
           ["尺寸（毫米）", "Dimensions(mm)", ":", "约/Appro. 26.95x 32.73x 10.23"],
-          ["重量（克拉）", "Weight(ct)", ":", "62.51 （整个饰物 With Mounting）"],
+          ["重量（克拉）", "Weight(ct)", ":", "#{@weight} （整个饰物 With Mounting）"],
           ["透明度", "Transparency", ":", "半透明 Transparency"],
           ["颜色", "Color", ":", "淡绿色"],
           ["", "", "", "Pale Green"],

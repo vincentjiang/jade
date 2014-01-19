@@ -39,26 +39,44 @@
   <div class="item-group">
     <div class="item">
       <%= f.label :dimensions1, '尺寸一：' %>
-      <%= f.text_field :dimensions1, size: 4 %>
+      <%= f.text_field :dimensions1, size: 6 %>
       <%= f.label :dimensions2, '尺寸二：' %>
-      <%= f.text_field :dimensions2, size: 4 %>
+      <%= f.text_field :dimensions2, size: 6 %>
       <%= f.label :dimensions3, '尺寸三：' %>
-      <%= f.text_field :dimensions3, size: 4 %>
-      <%= f.label :dimension, '尺寸（计算后）：' %>
-      <%= f.text_field :dimension, size: 4, disabled: true %>
+      <%= f.text_field :dimensions3, size: 6 %>
     </div>
   </div>
 
   <div class="item-group">
     <div class="item">
       <%= f.label :weight, '重量：' %>
-      <%= f.text_field :weight, size: 4 %>
+      <%= f.text_field :weight, size: 8 %>
       <%= f.radio_button :weight_desc, "A", checked: "checked" %>
       <%= f.label :weight_desc_a, '裸石' %>
       <%= f.radio_button :weight_desc, "B" %>
       <%= f.label :weight_desc_b, '整件饰物' %>
       <%= f.radio_button :weight_desc, "C" %>
       <%= f.label :weight_desc_c, '整件饰物-连绳' %>
+    </div>
+  </div>
+
+  <div class="item-group">
+    <label for="">比重值：</label>
+    <div class="item">
+      <%= f.radio_button :is_measure, "A" %>
+      <%= f.label :is_measure_a, '未能测量：' %>
+    </div>
+    <div class="item">
+      <%= f.radio_button :is_measure, "B", checked: "checked" %>
+      <%= f.label :is_measure_b, '测量：' %>
+      <%= f.label :ww1, 'ww1：' %>
+      <%= f.text_field :ww1, size: 8 %>
+      <%= f.label :ww2, 'ww2：' %>
+      <%= f.text_field :ww2, size: 8 %>
+      <%= f.label :ww3, 'ww3：' %>
+      <%= f.text_field :ww3, size: 8 %>
+      <%= f.label :sg, 'SG值：' %>
+      <%= f.text_field :sg, size: 8, disabled: true %>
     </div>
   </div>
 
@@ -73,7 +91,7 @@
     </div>
     <div class="item">
       <%= f.label :refractive_index, '折射率：' %>
-      <%= f.text_field :refractive_index, size: 4, placeholder: 1.66 %>
+      <%= f.text_field :refractive_index, size: 6 %>
     </div>
   </div>
   
@@ -99,25 +117,6 @@
     </div>
   </div>
 
-  <div class="item-group">
-    <label for="">比重值：</label>
-    <div class="item">
-      <%= f.radio_button :is_measure, "A" %>
-      <%= f.label :is_measure_a, '未能测量：' %>
-    </div>
-    <div class="item">
-      <%= f.radio_button :is_measure, "B" %>
-      <%= f.label :is_measure_b, '测量：' %>
-      <%= f.label :ww1, 'ww1：' %>
-      <%= f.text_field :ww1, size: 4 %>
-      <%= f.label :ww2, 'ww2：' %>
-      <%= f.text_field :ww2, size: 4 %>
-      <%= f.label :ww3, 'ww3：' %>
-      <%= f.text_field :ww3, size: 4 %>
-      <%= f.label :sg, 'SG值：' %>
-      <%= f.text_field :sg, size: 4, disabled: true %>
-    </div>
-  </div>
   <div class="item-group">
     <label for="">荧光效应：</label>
     <div class="item">
@@ -178,6 +177,19 @@
       <%= f.radio_button :level, "BC" %>
       <%= f.label :level_bc, 'B+C' %>
     </div>
+  </div>
+
+  <div class="item-group">
+    <div class="item">
+      <%= f.label :infrared_spectrum, '红外线光谱：' %>
+      <%= f.radio_button :infrared_spectrum, "A", checked: "checked" %>
+      <%= f.label :infrared_spectrum_a, '不含树脂物质' %>
+      <%= f.radio_button :infrared_spectrum, "B" %>
+      <%= f.label :infrared_spectrum_b, '含树脂物质' %>
+    </div>
+  </div>
+
+  <div class="item-group">
     <div class="item">
       <%= f.label :conclusion, '结论：' %>
       <%= f.radio_button :conclusion, "A" %>
@@ -205,3 +217,84 @@
     <%= f.submit '确认', class: "btn btn-success" %>&nbsp;&nbsp;<%= link_to '返回', certificates_path %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+
+  $(function() {
+
+    // 折射率默认为1.66
+    $refractive_index = $('#certificate_refractive_index');
+    if ($refractive_index.val() == "") {
+      $refractive_index.val(1.66);
+    };
+
+    // SG值默认为(WW1+WW2+WW3)/3，再四舍五入，保留2位小数
+    $("input[id^=certificate_ww]").blur(function(event) {
+      val_sg = Math.round((($("#certificate_ww1").val() * 1 + $("#certificate_ww2").val() * 1 + $("#certificate_ww3").val() * 1)/3)*100)/100;
+      $("#certificate_sg").val(val_sg);
+    });
+
+    // 当裸石时，比重值自动选择“测量”
+    $("#certificate_weight_desc_a").change(function(event) {
+      $("#certificate_is_measure_b").prop('checked', true);
+     });
+
+    // 当比重值为“未能测量”时，WW1、WW2和WW3不能输入
+    $("#certificate_is_measure_a").change(function(event) {
+      $("#certificate_ww1").val('');
+      $("#certificate_ww1").prop('disabled', true);
+      $("#certificate_ww2").val('');
+      $("#certificate_ww2").prop('disabled', true);
+      $("#certificate_ww3").val('');
+      $("#certificate_ww3").prop('disabled', true);
+    });
+    $("#certificate_is_measure_b").change(function(event) {
+      $("#certificate_ww1").prop('disabled', false);
+      $("#certificate_ww2").prop('disabled', false);
+      $("#certificate_ww3").prop('disabled', false);
+    });
+
+    // 如果翡翠级别为A或C，红外线光谱自动选择“不含树脂物质”，否则自动选择“含树脂物质”
+    $("input[id^=certificate_level_]").change(function(event) {
+      if ($(this).attr('id') == 'certificate_level_a' || $(this).attr('id') == 'certificate_level_c') {
+        $("#certificate_infrared_spectrum_a").prop('checked', true);
+      } else {
+        $("#certificate_infrared_spectrum_b").prop('checked', true);
+      }
+    });
+
+    //如果“透明度”或“比重值”或“偏光仪”其中一项选择了未测量，program自动选择为"report"，否则选择"certificate"
+    $("#certificate_is_measure_a").change(function(event) {
+      if ($("#certificate_is_measure_a").attr('checked') != true && $("#certificate_transparency").val() != "未能测量" && $("#certificate_polariscope").val() != "未能测量") {
+        $("#certificate_is_hoklas_a").prop('checked', true);
+      } else {
+        $("#certificate_is_hoklas_b").prop('checked', true);
+      }
+    });
+
+
+    // $("#certificate_is_measure_a").change(function(event) {
+    //   $("#certificate_is_hoklas_a").prop('checked', true);
+    // });
+    // $("#certificate_is_measure_b").change(function(event) {
+    //   if ($("#certificate_transparency").val() != "未能测量" && $("#certificate_polariscope").val() != "未能测量") {
+    //     $("#certificate_is_hoklas_b").prop('checked', true);
+    //   }
+    // });
+    // $("#certificate_transparency").change(function(event) {
+    //   if ($(this).val() == "未能测量") {
+    //     $("#certificate_is_hoklas_a").prop('checked', true);
+    //   }
+    // });
+    // $("#certificate_polariscope").change(function(event) {
+    //   if ($(this).val() == "未能测量") {
+    //     $("#certificate_is_hoklas_a").prop('checked', true);
+    //   }
+    // });
+
+
+
+
+  });
+
+</script>

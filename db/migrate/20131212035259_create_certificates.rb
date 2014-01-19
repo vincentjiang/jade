@@ -11,7 +11,6 @@ class CreateCertificates < ActiveRecord::Migration
       t.decimal :dimensions1
       t.decimal :dimensions2
       t.decimal :dimensions3
-      t.decimal :dimension
       t.decimal :weight
       t.string :weight_desc
       t.string :transparency

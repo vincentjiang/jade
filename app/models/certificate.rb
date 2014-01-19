@@ -21,9 +21,20 @@ class Certificate < ActiveRecord::Base
 
 	after_initialize :date_for_issue
 
+	before_save :weight_round_down_3, :val_sg
+
 	#当新建证书或者修改证书的时候，证书的签发日期默认就等于测试日期
 	def date_for_issue
     self.date_issue = date_test
+  end
+
+  # round down 3位小数
+  def weight_round_down_3
+    self.weight = weight.to_f < 1 ? weight.to_i.to_f : (weight - 0.5 / 10**3).round(3)
+  end
+
+  def val_sg
+  	self.sg = ((ww1 + ww2 + ww3)/3).round(2)
   end
 
 end
