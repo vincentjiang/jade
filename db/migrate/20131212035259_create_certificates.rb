@@ -2,7 +2,7 @@ class CreateCertificates < ActiveRecord::Migration
   def change
     create_table :certificates do |t|
       t.string :report_no
-      t.boolean :is_hoklas
+      t.string :is_hoklas
       t.date :date_test
       t.date :date_issue
       t.string :shape
@@ -23,7 +23,7 @@ class CreateCertificates < ActiveRecord::Migration
       t.string :distribution
       t.string :polariscope
       t.decimal :refractive_index
-      t.boolean :is_measure
+      t.string :is_measure
       t.decimal :ww1
       t.decimal :ww2
       t.decimal :ww3

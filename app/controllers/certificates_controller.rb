@@ -65,31 +65,34 @@ class CertificatesController < ApplicationController
         pdf.move_cursor_to 600
 
         @weight = @certificate.weight < 200 ? @certificate.weight.round(2) : @certificate.weight
+        @dimension =  (@certificate.dimensions1 && @certificate.dimensions2 && @certificate.dimensions3) ? "约/Appro. #{@certificate.dimensions1}x #{@certificate.dimensions2}x #{@certificate.dimensions3}" : "约/Appro. #{@certificate.dimensions1}x #{@certificate.dimensions2}" 
 
         data2 = [
-          ["形状和琢型", "Shape and Cut", ":", "佛公吊坠"],
+          ["形状和琢型", "Shape and Cut", ":", "#{@certificate.shape}#{@certificate.object} - #{@certificate.cut}"],
           ["", "", "", "Bunddha Pendant"],
-          ["尺寸（毫米）", "Dimensions(mm)", ":", "约/Appro. 26.95x 32.73x 10.23"],
-          ["重量（克拉）", "Weight(ct)", ":", "#{@weight} （整个饰物 With Mounting）"],
-          ["透明度", "Transparency", ":", "半透明 Transparency"],
-          ["颜色", "Color", ":", "淡绿色"],
+          ["尺寸（毫米）", "Dimensions(mm)", ":", "#{@dimension}"],
+          ["重量（克拉）", "Weight(ct)", ":", "#{@weight} （#{@certificate.weight_desc} With Mounting）"],
+          ["透明度", "Transparency", ":", "#{@certificate.transparency} Transparency"],
+          ["颜色", "Color", ":", "#{@certificate.color1}"],
           ["", "", "", "Pale Green"],
-          ["偏光仪", "Polariscope", ":", "多晶质 Polycrystalline"],
-          ["折射率", "Refractive Index", ":", "1.65"],
-          ["比重", "Specific Gravity", ":", "未能测量 Not Measurable"],
+          ["偏光仪", "Polariscope", ":", "#{@certificate.polariscope} Polycrystalline"],
+          ["折射率", "Refractive Index", ":", "#{@certificate.refractive_index}"],
+          ["比重", "Specific Gravity", ":", "#{@certificate.is_measure} Not Measurable"],
           ["荧光", "Fluorescence", "", ""],
-          ["紫外线长波", "UV-LW", ":", "弱 Faint"],
-          ["紫外线短波", "UV-SW", ":", "弱 Faint"],
-          ["滤色镜", "Chelsea Color Filter", ":", "绿色 Green"],
-          ["可见光谱", "Visible Spectrum", ":", "翡翠光谱"],
+          ["紫外线长波", "UV-LW", ":", "#{@certificate.uv_lw} Faint"],
+          ["紫外线短波", "UV-SW", ":", "#{@certificate.uv_sw} Faint"],
+          ["滤色镜", "Chelsea Color Filter", ":", "#{@certificate.chelsea_color_filter} Green"],
+          ["可见光谱", "Visible Spectrum", ":", "#{@certificate.visible_spectrum}"],
           ["", "", "", "Fei Cui Spectrum"],
-          ["放大观察", "Magnification", ":", "纤维状晶体结构（幼粒）"],
+          ["放大观察", "Magnification", ":", "#{@certificate.magnification} - #{@certificate.surface_feature}"],
           ["", "", "", "Fine Granular & Fibrous Texture"]]
 
         pdf.table(data2) do
           cells.border_width = 0
-          row(0..18).columns(3).borders = [:bottom]
-          row(0..18).columns(3).border_width = 1
+          row(0..9).columns(3).borders = [:bottom]
+          row(0..9).columns(3).border_width = 1
+          row(11..18).columns(3).borders = [:bottom]
+          row(11..18).columns(3).border_width = 1
         end
 
         pdf.move_cursor_to 600
@@ -127,9 +130,9 @@ class CertificatesController < ApplicationController
         pdf.move_cursor_to 210
 
         data4 = [
-          ["结论", ":", "天然翡翠 - A玉"],
+          ["结论", ":", "#{@certificate.conclusion} - #{@certificate.level}玉"],
           ["Conclusion", ":", "Natural Fei Cui - Type A"],
-          ["评论", ":", "天然颜色翡翠 - 不含树脂成份"],
+          ["评论", ":", "#{@certificate.comments}"],
           ["Comments", ":", "Natural Color Fei Cui without resin"]]
 
         pdf.table(data4, :position => :right) do
@@ -141,7 +144,7 @@ class CertificatesController < ApplicationController
         pdf.move_cursor_to 90
 
         data5 = [
-          ["红外线光谱", "Infrared Spectrum", ":", "不含树脂物质"],
+          ["红外线光谱", "Infrared Spectrum", ":", "#{@certificate.infrared_spectrum}"],
           ["", "", ":", "No resin is detected"]]
 
         pdf.table(data5) do
