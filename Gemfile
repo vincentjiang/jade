@@ -10,6 +10,9 @@ gem 'prawn'
 # upload
 gem 'carrierwave'
 
+# Server
+gem 'unicorn'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
