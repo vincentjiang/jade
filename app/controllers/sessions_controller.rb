@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
   	if user = User.authenticate(params[:email], params[:password])
   		session[:user_id] = user.id
-  		redirect_to index_path, notice: "Welcome, time now is #{Time.new}"
+  		redirect_to index_path, notice: "您好！本次登录时间为：#{Time.new.strftime('%Y-%m-%d %H:%M:%S').to_s}"
   	else
   		redirect_to login_path, alert: "Invalide login infomation, please input correctly"
   	end
